@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+ samba:
+  image: samba:1.0.0
+  hostname: samba
+  container_name: samba
+  privileged: true
+  volumes:
+   - smb:/storage
+  ports:
+   - "137:137/udp"
+   - "138:138/udp"
+   - "139:139"
+   - "445:445"
+
+#volumes:
+# smb:
+#  driver: rexray
+ #  name: samba2
+
+
+volumes:
+  smb:
+    driver: rexray/ebs
